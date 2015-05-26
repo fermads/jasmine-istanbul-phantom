@@ -60,7 +60,6 @@ If no `options` argument is provided, will assume:
     report: basepath +'/report/unit'
   },
   istanbul: {
-    <!-- isrc: 'isrc', -->
     report: basepath +'/report/coverage',
     reporters: ['text-summary', 'lcov', 'clover']
   },
@@ -73,7 +72,7 @@ If no `options` argument is provided, will assume:
 ```
 Where:
 
-- **src** (_glob_): JavaSript source files. The ones that will be instrumented
+- **src** (_glob_): JavaScript source files. The ones that will be instrumented
   and tested
 - **lib** (_glob_): Other JavaScript files. Will not be tested nor instrumented
 - **tmp** (_path_): Path to write instrumented source code, fixtures file and
@@ -92,7 +91,7 @@ Where:
 - **phantom**
   - **bin** (_file_): Phantomjs binary. If not specified, try to find it
     using [which](https://www.npmjs.com/package/npm-which)
-  - **verbose** (_boolean): Show resource errors e.g. file not found
+  - **verbose** (_boolean_): Show resource errors e.g. file not found
   - **params** (_array_): Phantomjs additional runtime parameters
 
 ## Using fixtures
@@ -100,7 +99,7 @@ All files from the fixtures glob are loaded and made available as an object to
 the spec files. Properties are filenames and values are strings
 
 ```js
-// get the song.json fixture as a JSON
+// on any spec file, get the song.json fixture as a JSON
 var song = JSON.parse(getFixture('song.json'))
 ```
 
@@ -109,19 +108,22 @@ var song = JSON.parse(getFixture('song.json'))
 console.log(getFixture());
 ```
 
-## Open and run Jasmine tests in a browser (not Phantomjs)
-Open `[basepath]/[tmp]/[runner]` in a browser.
-Default is `test/tmp/SpecRunner.html`. Running in a browser obviously will not
+## Run Jasmine tests in a browser
+Open `[basepath]/[tmp]/[runner]` in a full browser (not Phantom).
+Default is `test/tmp/SpecRunner.html`. Running in a browser will not
 generate coverage and unit file reports but is useful to debug Jasmine specs
 
-## Full Istanbul coverage reports
-Open `[basepath]/[reports]/coverage/lcov-report/index.html` in a browser
+## Istanbul coverage reports
+Console shows only a summary report. Open
+`[basepath]/[report]/coverage/lcov-report/index.html` in a browser for
+full coverage report
 
-## Use your own spec runner
+## Editing the spec runner
 Copy the original spec runner's template from
 `node_modules/jasmine-istanbul-phantom/lib/jasmine/SpecRunner.html`
 to another path and run with option `{runner:'path/to/new/runner.html'}`.
-Edit the file as needed but keep the jasmine and fixture script and css
+Edit the new runner as needed but keep the jasmine and fixture script/style
+includes
 
 ## Jasmine ajax tests
 XHR tests use the included
@@ -132,16 +134,19 @@ Example at
 
 Remember to run ```jasmine.Ajax.install()``` before any ajax request and
 don't bother to turn it off. Usually it's turned on and off because fixtures are
-fetched using ajax. This plugin preload fixtures and do not use ajax.
+fetched using ajax. This module preload fixtures and do not use ajax
+to load them.
 
 ## Phantomjs 2.0
-This plugin comes with [npm phantom](https://www.npmjs.com/package/phantomjs).
+This module comes with [npm phantom](https://www.npmjs.com/package/phantomjs).
 To run with Phantomjs 2.x, install and add it to your path or use the option
 below.
 ```js
+{
   phantom: {
     bin : '/path/to/phantom2',
   }
+}
 ```
 
 ## Useful Phantomjs parameters
