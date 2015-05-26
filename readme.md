@@ -33,7 +33,7 @@ jip([options])
 ```
 
 ### Example
-Exemple project using Gulp to run only changed specs
+See example project using Gulp to run only changed specs at
 [/example](https://github.com/fermads/jasmine-istanbul-phantom/tree/master/example)
 
 ```bash
@@ -109,7 +109,7 @@ console.log(getFixture());
 ```
 
 ## Run Jasmine tests in a browser
-Open `[basepath]/[tmp]/[runner]` in a full browser (not Phantom).
+Open `[basepath]/[tmp]/[runner]` in a browser with GUI (not Phantom).
 Default is `test/tmp/SpecRunner.html`. Running in a browser will not
 generate coverage and unit file reports but is useful to debug Jasmine specs
 
