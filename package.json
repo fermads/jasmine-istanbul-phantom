@@ -1,0 +1,32 @@
+{
+  "name": "jasmine-istanbul-phantom",
+  "version": "0.8.0",
+  "description": "Client side JavaScript unit tests and code coverage with fixtures and ajax mock support",
+  "main": "src/index.js",
+  "keywords": [
+    "jasmine",
+    "istanbul",
+    "phantom",
+    "phantomjs",
+    "test",
+    "unit",
+    "coverage",
+    "gulp"
+  ],
+  "author": "fermads",
+  "license": "MIT",
+  "dependencies": {
+    "globby": "^2.0.0",
+    "handlebars": "^3.0.3",
+    "istanbul": "^0.3.14",
+    "mkdirp": "^0.5.1",
+    "through2": "^0.6.5",
+    "vinyl-fs": "^1.0.0",
+    "which": "^1.1.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-uglify": "^1.2.0"
+  }
+}

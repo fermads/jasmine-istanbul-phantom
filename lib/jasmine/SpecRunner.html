@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jasmine Spec Runner v2.3.4</title>
+  <link href="{{jasmine.css}}" rel="stylesheet">
+  <script src="{{jasmine.js}}"></script>
+  <script src="{{fixture}}"></script>
+
+  {{#each lib}}
+    <script src="{{this}}"></script>
+  {{/each}}
+
+  {{#each src}}
+    <script src="{{this}}"></script>
+  {{/each}}
+
+  {{#each spec}}
+    <script src="{{this}}"></script>
+  {{/each}}
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,2 @@
+/* hide everything except jasmine reporter */
+body > *:not(.jasmine_html-reporter) {display:none !important;}
