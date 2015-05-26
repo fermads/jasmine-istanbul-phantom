@@ -33,13 +33,22 @@ var jip = require('jasmine-istanbul-phantom');
 jip([options]);
 ```
 
-### Example
-See example project using Gulp to run only changed specs at
+### Example:
+```js
+jip({
+  src: 'src/**/*.js',
+  lib: ['lib/jquery/*.min.js', 'lib/**/*.js'],
+  spec: 'test/spec/*.js',
+  fixture: 'test/fixture/*'
+})
+```
+### Gulp example:
+Project using Gulp to run only changed specs at
 [/example](https://github.com/fermads/jasmine-istanbul-phantom/tree/master/example)
 
-Run the example:
+Run with:
 ```
-cd jasmine-istanbul-phantom/example
+cd path/to/jasmine-istanbul-phantom/example
 gulp test watch
 ```
 
