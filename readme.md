@@ -5,7 +5,7 @@ ajax mock support
 
 - Jasmine 2.3.4 unit tests
 - Istanbul test coverage
-- Tests run on Phantomjs 1.9 (included) or 2.0
+- Tests run on Phantom 1.9 (included) or 2.0
 - Fixtures auto-load
 - Includes Jasmine ajax mock
 - Istanbul outputs summary to console and full reports to file
@@ -33,7 +33,7 @@ var jip = require('jasmine-istanbul-phantom');
 jip([options]);
 ```
 
-### Example:
+## Example:
 ```js
 jip({
   src: 'src/**/*.js',
@@ -42,17 +42,13 @@ jip({
   fixture: 'test/fixture/*'
 })
 ```
-### Gulp example:
-Project using Gulp to run only changed specs at
-[/example](https://github.com/fermads/jasmine-istanbul-phantom/tree/master/example)
+See [example project](https://github.com/fermads/jasmine-istanbul-phantom/tree/master/example)
 
-Run with:
-```
-cd path/to/jasmine-istanbul-phantom/example
-gulp test watch
-```
+#### Gulp example
+See a [gulpfile.js](https://github.com/fermads/jasmine-istanbul-phantom/blob/master/example/gulpfile.js)
+that runs only changed specs
 
-### Options
+## Options
 `[options]` is an object with the following properties and default values:
 
 - **base** (_path_): Defaults try to find `./test` or `./tests` directory<br>
@@ -86,13 +82,13 @@ gulp test watch
   - **reporters** (_array_): defaults to `['text-summary', 'lcov', 'clover']`<br>
     List of Istanbul reporters
 - **phantom**
-  - **bin** (_file_): Defaults try to find Phantomjs using
+  - **bin** (_file_): Defaults try to find Phantom using
     [which](https://www.npmjs.com/package/npm-which)<br>
-    Phantomjs binary file location
+    Phantom binary file location
   - **verbose** (_boolean_): defaults to `false`<br>
     Show resource errors e.g. file not found
   - **params** (_map_): defaults to `{}`<br>
-    Phantomjs additional runtime parameters. See some
+    Phantom additional runtime parameters. See some
     [useful parameters](https://github.com/fermads/jasmine-istanbul-phantom#useful-phantomjs-parameters)
 
 ### Using fixtures
@@ -139,9 +135,9 @@ don't bother to turn it off. Usually it's turned on and off because fixtures are
 fetched using ajax. This module preload fixtures and do not use ajax
 to load them.
 
-### Phantomjs 2.0
+### Phantom 2.0
 This module comes with [npm phantom](https://www.npmjs.com/package/phantomjs).
-To run with Phantomjs 2.x, install and add it to your path or use the option
+To run with Phantom 2.x, install and add it to your path or use the option
 below.
 ```js
 jip({
@@ -151,7 +147,7 @@ jip({
 })
 ```
 
-### Useful Phantomjs parameters
+### Useful Phantom parameters
 ```js
 jip({
   phantom: {
