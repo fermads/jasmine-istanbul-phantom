@@ -49,56 +49,42 @@ gulp test watch
 - **base** (_path_): Defaults try to find `./test` or `./tests` directory<br>
   It's the base path for test files. Will be the parent directory of
   `tmp`, `fixture` and `report` dirs
-
 - **src** (_glob_): defaults to `src/**/*.js`<br>
   JavaScript source files. The ones that will be instrumented and tested
-
 - **lib** (_glob_): defaults to `['lib/**/*.js', 'vendor?(s)/**/*.js']`<br>
   Other JavaScript files. Will not be tested nor instrumented. Usually this
   property should be overwridden to ensure libs loading order
-
 - **tmp** (_path_): defaults to `[base]/tmp`<br>
   Path to write instrumented source code, fixtures file and
   final generated spec runner
-
 - **spec** (_glob_): defaults to `[base]/spec?(s)/**/*.js`<br>
   Jasmine spec files. The ones that will test the src files
-
 - **runner** (_file_): defaults to
   `jasmine-istanbul-phantom/lib/jasmine/SpecRunner.html`<br>
   Jasmine spec runner template. Will be used to generate the final HTML spec
   runner with calls to src, lib and spec files
-
 - **fixture** (_glob_): defaults to `[base]/fixture/*`<br>
   Files to be available as fixtures inside spec files.
   Access fixtures with `getFixture([filename])`
-
 - **callback** (_function_): defaults to `null`<br>
   Callback function is called when all tests end
-
 - **jasmine**
   - **report** (_path_): default to `[base]/report/unit`<br>
     Path to write Jasmine JUnit XML reports
-
 - **istanbul**
   - **report** (_path_):  default to `[base]/report/coverage`<br>
     Path to write Istanbul file reports
-
   - **reporters** (_array_): defaults to `['text-summary', 'lcov', 'clover']`<br>
     List of Istanbul reporters
-
 - **phantom**
   - **bin** (_file_): Defaults try to find Phantomjs using
     [which](https://www.npmjs.com/package/npm-which)<br>
     Phantomjs binary file location
-
   - **verbose** (_boolean_): defaults to `false`<br>
     Show resource errors e.g. file not found
-
   - **params** (_map_): defaults to `{}`<br>
     Phantomjs additional runtime parameters. See some
     [useful parameters](https://github.com/fermads/jasmine-istanbul-phantom#useful-phantomjs-parameters)
-
 
 ### Using fixtures
 All files from the fixtures glob are loaded and made available as an object to
@@ -125,7 +111,7 @@ Console shows only a summary report. Open
 `[base]/[report]/coverage/lcov-report/index.html` in a browser for
 full coverage report
 
-## Editing the spec runner
+### Editing the spec runner
 Copy the original spec runner's template from
 `jasmine-istanbul-phantom/lib/jasmine/SpecRunner.html`
 to another path and run with option `{runner:'path/to/new/runner.html'}`.
@@ -144,7 +130,7 @@ don't bother to turn it off. Usually it's turned on and off because fixtures are
 fetched using ajax. This module preload fixtures and do not use ajax
 to load them.
 
-## Phantomjs 2.0
+### Phantomjs 2.0
 This module comes with [npm phantom](https://www.npmjs.com/package/phantomjs).
 To run with Phantomjs 2.x, install and add it to your path or use the option
 below.
