@@ -36,67 +36,59 @@ jip([options])
 See example project using Gulp to run only changed specs at
 [/example](https://github.com/fermads/jasmine-istanbul-phantom/tree/master/example)
 
+Run the example:
 ```bash
 cd jasmine-istanbul-phantom/example
 gulp test watch
 ```
 
-### Default options
-If no `options` argument is provided, will assume:
+### Options
+`[options]` is an object with the following properties and default values:
 
-*basepath* as `./test` or `./tests`
-
-```js
-{
-  src: 'src/**/*.js',
-  lib: ['lib/**/*.js', 'vendor?(s)/**/*.js'],
-  tmp: basepath +'/tmp',
-  spec: basepath +'/spec?(s)/**/*.js',
-  runner: libpath +'/jasmine/SpecRunner.html',
-  fixture: basepath +'/fixture/*',
-  callback: null,
-  jasmine: {
-    lib: libpath +'/jasmine',
-    report: basepath +'/report/unit'
-  },
-  istanbul: {
-    report: basepath +'/report/coverage',
-    reporters: ['text-summary', 'lcov', 'clover']
-  },
-  phantom: {
-    bin: '',
-    verbose: false,
-    params: {}
-  }
-}
-```
-Where:
-
-- **src** (_glob_): JavaScript source files. The ones that will be instrumented
-  and tested
-- **lib** (_glob_): Other JavaScript files. Will not be tested nor instrumented
-- **tmp** (_path_): Path to write instrumented source code, fixtures file and
+- **base** (_path_): looks for `./test` and `./tests` and use first found as default.
+  Its the base path for test files. Will be the parent directory of
+  `tmp`, `fixture` and `report` dirs
+- **src** (_glob_): defaults to `src/**/*.js` <br>
+  JavaScript source files. The ones that will be instrumented and tested
+- **lib** (_glob_): defaults to `['lib/**/*.js', 'vendor?(s)/**/*.js']`
+  Other JavaScript files. Will not be tested nor instrumented. Usually this
+  property should be overwridden to ensure libs loading order
+- **tmp** (_path_): defaults to `[base]/tmp`
+  Path to write instrumented source code, fixtures file and
   final generated spec runner
-- **spec** (_glob_): Jasmine spec files. The ones that will test the src files
-- **runner** (_file_): Jasmine spec runner template. Will be used to
-  generate the final HTML spec runner with calls to src, lib and spec files
-- **fixture** (_glob_): Files to be available as fixtures inside spec files.
+- **spec** (_glob_): defaults to `[base]/spec?(s)/**/*.js`
+  Jasmine spec files. The ones that will test the src files
+- **runner** (_file_): defaults to
+  `jasmine-istanbul-phantom/lib/jasmine/SpecRunner.html`
+  Jasmine spec runner template. Will be used to generate the final HTML spec
+  runner with calls to src, lib and spec files
+- **fixture** (_glob_): defaults to `[base]/fixture/*`.
+  Files to be available as fixtures inside spec files.
   Access fixtures with `getFixture([filename])`
-- **callback** (_function_): Callback is called when tests end
+- **callback** (_function_): defaults to `null`.
+  Callback is called when all tests end
 - **jasmine**
-  - **report** (_path_): Path to write Jasmine JUnit XML reports
+  - **report** (_path_): default to `[base]/report/unit`
+    Path to write Jasmine JUnit XML reports
 - **istanbul**
-  - **report** (_path_): Path to write Istanbul reports
-  - **reporters** (_array_): List of Istanbul reporters
+  - **report** (_path_):  default to `[base]/report/coverage`
+    Path to write Istanbul reports
+  - **reporters** (_array_): defaults to `['text-summary', 'lcov', 'clover']`
+    List of Istanbul reporters
 - **phantom**
-  - **bin** (_file_): Phantomjs binary. If not specified, try to find it
-    using [which](https://www.npmjs.com/package/npm-which)
-  - **verbose** (_boolean_): Show resource errors e.g. file not found
-  - **params** (_array_): Phantomjs additional runtime parameters
+  - **bin** (_file_): Try to find Phantomjs using [which](https://www.npmjs.com/package/npm-which)
+    Phantomjs binary.
+  - **verbose** (_boolean_): defaults to `false`.
+    Show resource errors e.g. file not found
+  - **params** (_map_): defaults to `{}`
+    Phantomjs additional runtime parameters. See some
+    [useful parameters](https://github.com/fermads/jasmine-istanbul-phantom#useful-phantomjs-parameters)
+
 
 ## Using fixtures
 All files from the fixtures glob are loaded and made available as an object to
-the spec files. Properties are filenames and values are strings
+the spec files. Properties are filenames and values are strings. See
+[FixtureSpec example](https://github.com/fermads/jasmine-istanbul-phantom/blob/master/example/test/spec/FixtureSpec.js)
 
 ```js
 // on any spec file, get the song.json fixture as a JSON
@@ -109,20 +101,20 @@ console.log(getFixture());
 ```
 
 ## Run Jasmine tests in a browser
-Open `[basepath]/[tmp]/[runner]` in a browser with GUI (not Phantom).
-Default is `test/tmp/SpecRunner.html`. Running in a browser will not
-generate coverage and unit file reports but is useful to debug Jasmine specs
+Open `[base]/[tmp]/SpecRunner.html` in a browser with GUI (not Phantom).
+Running in a browser with a GUI is useful for tests development and debug
+of Jasmine specs
 
 ## Istanbul coverage reports
 Console shows only a summary report. Open
-`[basepath]/[report]/coverage/lcov-report/index.html` in a browser for
+`[base]/[report]/coverage/lcov-report/index.html` in a browser for
 full coverage report
 
 ## Editing the spec runner
 Copy the original spec runner's template from
-`node_modules/jasmine-istanbul-phantom/lib/jasmine/SpecRunner.html`
+`jasmine-istanbul-phantom/lib/jasmine/SpecRunner.html`
 to another path and run with option `{runner:'path/to/new/runner.html'}`.
-Edit the new runner as needed but keep the jasmine and fixture script/style
+Edit the new runner as needed but keep the Jasmine and fixture script/style
 includes
 
 ## Jasmine ajax tests
