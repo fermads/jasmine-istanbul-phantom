@@ -1,6 +1,6 @@
 var gulp = require('gulp')
 var jip = require('../src')
-var glob = null
+var changedSpec = null
 
 /*
  * Run all specs, then, on watch:
@@ -11,12 +11,12 @@ var glob = null
 gulp.task('test', function(done) {
   var options = { callback: done }
 
-  if (glob)
-    options.spec = glob
+  if (changedSpec)
+    options.spec = changedSpec
 
   jip(options)
 
-  glob = null
+  changedSpec = null
 })
 
 gulp.task('watch', function() {
@@ -25,7 +25,7 @@ gulp.task('watch', function() {
   })
 
   gulp.watch('test/spec/*.js').on('change', function(event){
-    glob = event.path
+    changedSpec = event.path
     gulp.start('test')
   })
 })
