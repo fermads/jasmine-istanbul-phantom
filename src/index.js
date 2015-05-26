@@ -9,9 +9,6 @@ var jasmine = require('./jasmine')
 var utility = require('./utility')
 var istanbul = require('./istanbul')
 
-var base = getBasePath()
-var libpath = __dirname +'/../lib'
-
 var globOptions = {
   realpath: true,
   nodir: true
@@ -22,47 +19,59 @@ var configs = { // spec runner's handlebars template variables
   fixture: '', jasmine: { js:'', css:'' }
 }
 
-var defaults = { // default options
-  src: 'src/**/*.js',
-  lib: ['lib/**/*.js', 'vendor?(s)/**/*.js'],
-  tmp: base +'/tmp',
-  spec: base +'/spec?(s)/**/*.js',
-  runner: libpath +'/jasmine/SpecRunner.html',
-  fixture: base +'/fixture/*',
-  callback: null,
-  // url: 'http://localhost/',
-  jasmine: {
-    js: libpath +'/scripts.js',
-    css: libpath +'/styles.css',
-    report: base +'/report/unit',
-    fixture: 'fixture.js', // fixture filename
-    reporters: ['terminal', 'junit']
-  },
-  istanbul: {
-    isrc: 'isrc', // instrumented code dir name
-    report: base +'/report/coverage',
-    reporters: ['text-summary', 'lcov', 'clover']
-  },
-  phantom: {
-    bin: '',
-    api: libpath +'/phantom/phantom-api.js',
-    verbose: false,
-    params: {}
-  }
-}
-
-function getBasePath() {
-  if(utility.isDirectory('test'))
+function getBasePath(base) {
+  if(base && utility.isDirectory(base))
+    return base
+  else if(base && !utility.isDirectory(base))
+    throw 'Base path does not exist: '+ base
+  else if(utility.isDirectory('test'))
     return 'test'
   else if(utility.isDirectory('tests'))
     return 'tests'
   else
-    return 'test'
+    throw 'No base path found. Set base options.'
+}
+
+function extendDefaults(options) {
+  var libpath = __dirname +'/../lib'
+  options = options || {}
+  options.base = getBasePath(options.base)
+
+  var defaults = { // default options
+    src: 'src/**/*.js',
+    lib: ['lib/**/*.js', 'vendor?(s)/**/*.js'],
+    tmp: options.base +'/tmp',
+    spec: options.base +'/spec?(s)/**/*.js',
+    runner: libpath +'/jasmine/SpecRunner.html',
+    fixture: options.base +'/fixture/*',
+    callback: null,
+    // url: 'http://localhost/',
+    jasmine: {
+      js: libpath +'/scripts.js',
+      css: libpath +'/styles.css',
+      report: options.base +'/report/unit',
+      fixture: 'fixture.js', // fixture filename
+      reporters: ['terminal', 'junit']
+    },
+    istanbul: {
+      isrc: 'isrc', // instrumented code dir name
+      report: options.base +'/report/coverage',
+      reporters: ['text-summary', 'lcov', 'clover']
+    },
+    phantom: {
+      bin: '',
+      api: libpath +'/phantom/phantom-api.js',
+      verbose: false,
+      params: {}
+    }
+  }
+
+  return utility.extend(defaults, options)
 }
 
 function init(options) {
   var isrc = []
-  options = utility.extend(defaults, options)
+  options = extendDefaults(options)
 
   vfs.src(options.src, globOptions)
     .pipe(istanbul.instrumentCode())
@@ -76,6 +85,8 @@ function init(options) {
       configs.src = isrc
       addSpecs(options)
     })
+
+  return options
 }
 
 function addSpecs(options) {
