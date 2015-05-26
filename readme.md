@@ -3,8 +3,8 @@
 Client side JavaScript unit tests and code coverage with fixtures and
 ajax mock support
 
-- Jasmine 2.3.4 unit tests
-- Istanbul test coverage
+- Jasmine v2.3.4 for unit tests
+- Istanbul for test coverage
 - Tests run on Phantom 1.9 (included) or 2.0
 - Fixtures auto-load
 - Includes Jasmine ajax mock
@@ -15,10 +15,9 @@ ajax mock support
 
 
 <!--
-Focused on performance, everything runs on file://. No server start/stop and
-no socket communication between jasmine, phantom and node.js. It uses stdio.
-This is also why one must use Ajax mock and the provided getFixture()
-Async file writes and reads.
+Focused on performance, tests runs on file://. No server start/stop and
+no socket communication between Jasmine, Phantom or Node. Uses stdio.
+This is why one must use ajax mock and the provided fixture auto-loading.
 -->
 
 ## Install
