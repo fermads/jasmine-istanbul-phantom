@@ -86,7 +86,7 @@ that runs only changed specs
     Phantom binary file location
   - **verbose** (_boolean_): defaults to `false`<br>
     Show resource errors e.g. file not found
-  - **params** (_map_): defaults to `{}`<br>
+  - **params** (_object_): defaults to `{}`<br>
     Phantom additional runtime parameters. See some
     [useful parameters](https://github.com/fermads/jasmine-istanbul-phantom#useful-phantomjs-parameters)
 
@@ -135,8 +135,9 @@ fetched using ajax. This module preload fixtures and do not use ajax
 to load them.
 
 ### Phantom 2.0
-This module comes with [npm phantom](https://www.npmjs.com/package/phantomjs).
-To run with Phantom 2.x, install it and use the option below.
+This module comes with [npm phantom](https://www.npmjs.com/package/phantomjs)
+v1.9.8 (as of may 2015). To run with Phantom 2.x, install it and use the option
+below.
 ```js
 jip({
   phantom: {
