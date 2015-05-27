@@ -136,8 +136,7 @@ to load them.
 
 ### Phantom 2.0
 This module comes with [npm phantom](https://www.npmjs.com/package/phantomjs).
-To run with Phantom 2.x, install and add it to your path or use the option
-below.
+To run with Phantom 2.x, install it and use the option below.
 ```js
 jip({
   phantom: {
