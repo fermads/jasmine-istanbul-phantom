@@ -5,7 +5,7 @@ ajax mock support
 
 - Jasmine v2.3.4 for unit tests
 - Istanbul for test coverage
-- Tests run on Phantom 1.9 (included) or 2.0
+- Tests run on Phantom 1.9.8 (included) or 2.0.0
 - Fixtures auto-load
 - Includes Jasmine ajax mock
 - Istanbul outputs summary to console and full reports to file
