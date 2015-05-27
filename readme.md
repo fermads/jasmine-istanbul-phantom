@@ -90,6 +90,35 @@ that runs only changed specs
     Phantom additional runtime parameters. See some
     [useful parameters](#useful-phantom-parameters)
 
+<!--
+#### Exemple project structure
+Works with this module's default options
+```
+project/
+├── lib/
+│   ├── jquery
+│   │   └── jquery-2.1.4.min.js
+│   └── etc...
+├── src/
+│   ├── app.js
+│   ├── util.js
+│   └── etc...
+└── test/
+    ├── fixture/
+    │   └── all fixture files...
+    ├── report/
+    │   ├── coverage
+    │   │   └── Istanbul reports...
+    │   └── unit
+    │       └── Jasmine reports...
+    ├── spec/
+    │   └── all spec files...
+    └── tmp/
+        ├── isrc/
+        │   └── generated instrumented src
+        └── SpecRunner.html (generated spec runner)
+```
+-->
 ### Using fixtures
 All files from the fixtures glob are loaded and made available as an object to
 the spec files. Properties are filenames and values are strings. See
