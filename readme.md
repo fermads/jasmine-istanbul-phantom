@@ -88,7 +88,7 @@ that runs only changed specs
     Show resource errors e.g. file not found
   - **params** (_object_): defaults to `{}`<br>
     Phantom additional runtime parameters. See some
-    [useful parameters](https://github.com/fermads/jasmine-istanbul-phantom#useful-phantomjs-parameters)
+    [useful parameters](https://github.com/fermads/jasmine-istanbul-phantom#useful-phantom-parameters)
 
 ### Using fixtures
 All files from the fixtures glob are loaded and made available as an object to
