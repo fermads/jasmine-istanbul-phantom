@@ -1,5 +1,4 @@
 var path = require('path')
-var which = require('which')
 var globby = require('globby')
 var vfs = require('vinyl-fs')
 var events = require('events')
@@ -158,15 +157,11 @@ function addRunner(options) {
 function runPhantom(options) {
   if(options.phantom && options.phantom.bin) { // phantom bin option provided
     if(!utility.isFile(options.phantom.bin))
-      return console.error('Phantomjs binary not found at '+ options.phantom.bin)
+      return console.error('Phantomjs binary not found at '+
+        options.phantom.bin)
   }
-  else { // try to find phantomjs binary
-    try {
-      options.phantom.bin = which.sync('phantomjs')
-    }
-    catch(e) {
-      return console.error('Phantomjs binary not found on your system')
-    }
+  else { // use npm phantomjs
+    options.phantom.bin = require('phantomjs').path
   }
 
   phantom.run(options.phantom, function onEnd(reports) {

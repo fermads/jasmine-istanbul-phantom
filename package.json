@@ -20,9 +20,9 @@
     "handlebars": "^3.0.3",
     "istanbul": "^0.3.14",
     "mkdirp": "^0.5.1",
+    "phantomjs": "^1.9.17",
     "through2": "^0.6.5",
-    "vinyl-fs": "^1.0.0",
-    "which": "^1.1.1"
+    "vinyl-fs": "^1.0.0"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
