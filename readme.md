@@ -81,8 +81,8 @@ that runs only changed specs
   - **reporters** (_array_): defaults to `['text-summary', 'lcov', 'clover']`<br>
     List of Istanbul reporters
 - **phantom**
-  - **bin** (_file_): Defaults try to find Phantom using
-    [which](https://www.npmjs.com/package/npm-which)<br>
+  - **bin** (_file_): Default uses the included
+    [npm phantom](https://www.npmjs.com/package/phantomjs)<br>
     Phantom binary file location
   - **verbose** (_boolean_): defaults to `false`<br>
     Show resource errors e.g. file not found
