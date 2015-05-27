@@ -157,10 +157,9 @@ function addRunner(options) {
 function runPhantom(options) {
   if(options.phantom && options.phantom.bin) { // phantom bin option provided
     if(!utility.isFile(options.phantom.bin))
-      return console.error('Phantomjs binary not found at '+
-        options.phantom.bin)
+      return console.error('Phantomjs binary not found at', options.phantom.bin)
   }
-  else { // use npm phantomjs
+  else { // use the included npm phantomjs
     options.phantom.bin = require('phantomjs').path
   }
 
