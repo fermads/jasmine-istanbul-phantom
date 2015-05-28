@@ -15,9 +15,8 @@ ajax mock support
 
 
 <!--
-Focused on performance, tests runs on file://. No server start/stop and
-no socket communication between Jasmine, Phantom or Node. Uses stdio.
-This is why one must use ajax mock and the provided fixture auto-loading.
+With focus on performance, everything runs on file://. No server start/stop
+and no net socket communication between Jasmine, Phantom or Node. It uses stdio.
 -->
 
 ## Install
@@ -51,13 +50,14 @@ that runs only changed specs
 `[options]` is an object with the following properties and default values:
 
 - **base** (_path_): Defaults try to find `./test` or `./tests` directory<br>
-  It's the base path for test files. Will be the parent directory of
-  `tmp`, `fixture` and `report` dirs
+  It's the base path for test files. Will be the parent directory of `spec`
+  `tmp`, `fixture` and `report` folders when using defaults. Otherwise one must
+  set all paths individually.
 - **src** (_glob_): defaults to `src/**/*.js`<br>
   JavaScript source files. The ones that will be instrumented and tested
 - **lib** (_glob_): defaults to `['lib/**/*.js', 'vendor?(s)/**/*.js']`<br>
   Other JavaScript files. Will not be tested nor instrumented. Usually this
-  property should be overwridden to ensure libs loading order
+  property should be overridden to ensure libs loading order
 - **tmp** (_path_): defaults to `[base]/tmp`<br>
   Path to write instrumented source code, fixtures file and
   final generated spec runner
@@ -91,7 +91,7 @@ that runs only changed specs
     [useful parameters](#useful-phantom-parameters)
 
 <!--
-#### Exemple project structure
+#### Example project structure
 Works with this module's default options
 ```
 project/
@@ -195,7 +195,7 @@ jip({
 
 <!--
 ## To-do
-- make writeFixtures async
+- make writeFixtures and writeRunner async
 - istanbul thresholds support
 - **clear** (_boolean_): Remove all tmp files at the end (instrumented
   code, generated spec runner, etc). Defaults to false
