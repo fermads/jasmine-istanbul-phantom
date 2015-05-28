@@ -28,7 +28,8 @@ function getBasePath(base) {
   else if(utility.isDirectory('tests'))
     return 'tests'
   else
-    throw 'No base path found. Set base options.'
+    throw 'No base path found. Create a base path folder "./test" or "./tests"'
+      +' (defaults) or use the "base" option to set a non-default folder'
 }
 
 function extendDefaults(options) {
@@ -80,7 +81,7 @@ function init(options) {
     })
     .on('end', function() {
       if(isrc.length === 0)
-        return console.error('No src files found')
+        return console.error('No src files found at', options.src)
       configs.src = isrc
       addSpecs(options)
     })
@@ -96,7 +97,7 @@ function addSpecs(options) {
     configs.spec = files
 
     if(configs.spec.length === 0)
-      return console.error('No spec files found at '+ options.spec)
+      return console.error('No spec files found at', options.spec)
 
     addLibs(options)
   })
@@ -136,7 +137,7 @@ function addFileProtocol(configs) {
 
 function addRunner(options) {
   if(!utility.isFile(options.runner))
-    return console.error('Spec runner not found at '+ options.runner)
+    return console.error('Spec runner not found at ', options.runner)
 
   // jasmine lib path
   configs.jasmine.js = path.normalize(options.jasmine.js)
