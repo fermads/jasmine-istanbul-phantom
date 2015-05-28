@@ -50,7 +50,7 @@ that runs only changed specs
 `[options]` is an object with the following properties and default values:
 
 - **base** (_path_): Defaults try to find `./test` or `./tests` directory<br>
-  It's the base path for test files. Will be the parent directory of `spec`
+  It's the base path for test files. Will be the parent directory of `spec`,
   `tmp`, `fixture` and `report` folders when using defaults. Otherwise one must
   set all paths individually.
 - **src** (_glob_): defaults to `src/**/*.js`<br>
