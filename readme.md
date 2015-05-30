@@ -53,7 +53,7 @@ that runs only changed specs
   It's the base path for test files. Will be the parent directory of `spec`,
   `tmp`, `fixture` and `report` folders when using defaults. Otherwise one must
   set all paths individually.
-- **src** (_glob_): defaults to `src/**/*.js`<br>
+- **src** (_glob_): defaults to `['src/**/*.js','app/**/*.js']`<br>
   JavaScript source files. The ones that will be instrumented and tested
 - **lib** (_glob_): defaults to `['lib/**/*.js', 'vendor?(s)/**/*.js']`<br>
   Other JavaScript files. Will not be tested nor instrumented. Usually this
