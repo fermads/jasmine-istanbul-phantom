@@ -89,7 +89,7 @@ that runs only changed specs
     [useful parameters](#useful-phantom-parameters)
 
 
-#### Example project structure
+### Example project structure
 Works with this module's default options
 ```
 project/
