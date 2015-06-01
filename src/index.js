@@ -38,7 +38,7 @@ function extendDefaults(options) {
   options.base = getBasePath(options.base)
 
   var defaults = { // default options
-    src: 'src/**/*.js',
+    src: ['src/**/*.js','app/**/*.js'],
     lib: ['lib/**/*.js', 'vendor?(s)/**/*.js'],
     tmp: options.base +'/tmp',
     spec: options.base +'/spec?(s)/**/*.js',

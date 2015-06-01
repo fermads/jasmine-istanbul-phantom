@@ -1,11 +1,10 @@
-# jasmine-istanbul-phantom
+﻿# jasmine-istanbul-phantom
 
 Client side JavaScript unit tests and code coverage with fixtures and
 ajax mock support combining Jasmine, Istanbul and Phantom in one simple
 module
 
-- Jasmine v2.3.4 for unit tests
-- Istanbul for test coverage
+- Jasmine v2.3.4 for unit tests and Istanbul for test coverage
 - Tests run on Phantom 1.9.8 (included) or 2.0.0
 - Fixtures auto-load
 - Easy Gulp integration
@@ -52,7 +51,7 @@ that runs only changed specs
   It's the base path for test files. Will be the parent directory of `spec`,
   `tmp`, `fixture` and `report` folders when using defaults. Otherwise one must
   set all paths individually.
-- **src** (_glob_): defaults to `src/**/*.js`<br>
+- **src** (_glob_): defaults to `['src/**/*.js','app/**/*.js']`<br>
   JavaScript source files. The ones that will be instrumented and tested
 - **lib** (_glob_): defaults to `['lib/**/*.js', 'vendor?(s)/**/*.js']`<br>
   Other JavaScript files. Will not be tested nor instrumented. Usually this
@@ -89,7 +88,7 @@ that runs only changed specs
     Phantom additional runtime parameters. See some
     [useful parameters](#useful-phantom-parameters)
 
-<!--
+
 #### Example project structure
 Works with this module's default options
 ```
@@ -98,26 +97,26 @@ project/
 │   ├── jquery
 │   │   └── jquery-2.1.4.min.js
 │   └── etc...
-├── src/
+├── src/ (required)
 │   ├── app.js
 │   ├── util.js
 │   └── etc...
-└── test/
-    ├── fixture/
+└── test/ (required)
+    ├── fixture/ (optional)
     │   └── all fixture files...
-    ├── report/
+    ├── report/ (auto-created)
     │   ├── coverage
     │   │   └── Istanbul reports...
     │   └── unit
     │       └── Jasmine reports...
-    ├── spec/
+    ├── spec/ (required)
     │   └── all spec files...
-    └── tmp/
+    └── tmp/ (auto-created)
         ├── isrc/
         │   └── generated instrumented src
         └── SpecRunner.html (generated spec runner)
 ```
--->
+
 ### Using fixtures
 All files from the fixtures glob are loaded and made available as an object to
 the spec files. Properties are filenames and values are strings. See
