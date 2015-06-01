@@ -69,7 +69,7 @@ that runs only changed specs
   Files to be available as fixtures inside spec files.
   Access fixtures with `getFixture([filename])`
 - **callback** (_function_): defaults to `null`<br>
-  Callback function is called when all tests end
+  Callback function is called when all tests end and reports written
 - **jasmine**
   - **report** (_path_): default to `[base]/report/unit`<br>
     Path to write Jasmine JUnit XML reports
@@ -193,7 +193,8 @@ jip({
 
 <!--
 ## To-do
-- make writeFixtures and writeRunner async
+- make writeFixtures and writeRunner async with vinyl and remove dep mkdirp
+- remove through2 from istanbul.instrumentCode
 - istanbul thresholds support
 - **clear** (_boolean_): Remove all tmp files at the end (instrumented
   code, generated spec runner, etc). Defaults to false
