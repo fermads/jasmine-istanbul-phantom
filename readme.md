@@ -1,23 +1,22 @@
 # jasmine-istanbul-phantom
 
 Client side JavaScript unit tests and code coverage with fixtures and
-ajax mock support
+ajax mock support combining Jasmine, Istanbul and Phantom in one simple
+module
 
 - Jasmine v2.3.4 for unit tests
 - Istanbul for test coverage
 - Tests run on Phantom 1.9.8 (included) or 2.0.0
 - Fixtures auto-load
+- Easy Gulp integration
 - Includes Jasmine ajax mock
 - Istanbul outputs summary to console and full reports to file
 - Jasmine reports to console and to JUnit XML file for CI
 - Spec runner can also run in a full browser
 - Polyfill Function.bind for Phantom 1.9
 
-
-<!--
 With focus on performance, everything runs on file://. No server start/stop
 and no net socket communication between Jasmine, Phantom or Node. It uses stdio.
--->
 
 ## Install
 
