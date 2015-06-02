@@ -112,8 +112,8 @@ project/
     ├── spec/ (required)
     │   └── all spec files...
     └── tmp/ (auto-created)
-        ├── isrc/
-        │   └── generated instrumented src
+        ├── isrc.js (generated instrumented src)
+        ├── fixture.js (generated fixtures file)
         └── SpecRunner.html (generated spec runner)
 ```
 

@@ -1,6 +1,5 @@
 var path = require('path')
 var globby = require('globby')
-var vfs = require('vinyl-fs')
 var events = require('events')
 
 var phantom = require('./phantom')
@@ -54,7 +53,7 @@ function extendDefaults(options) {
       reporters: ['terminal', 'junit']
     },
     istanbul: {
-      isrc: 'isrc', // instrumented code dir name
+      isrc: 'isrc.js', // instrumented source filename
       report: options.base +'/report/coverage',
       reporters: ['text-summary', 'lcov', 'clover']
     },
@@ -70,21 +69,24 @@ function extendDefaults(options) {
 }
 
 function init(options) {
-  var isrc = []
   options = extendDefaults(options)
+  var isrc = options.istanbul.isrc
 
-  vfs.src(options.src, globOptions)
-    .pipe(istanbul.instrumentCode())
-    .pipe(vfs.dest(options.tmp +'/'+ options.istanbul.isrc))
-    .on('data', function(file) {
-      isrc.push(file.history[file.history.length -1])
-    })
-    .on('end', function() {
-      if(isrc.length === 0)
-        return console.error('No src files found at', options.src)
-      configs.src = isrc
+  globby(options.src, globOptions, function (error, files) {
+    if(error)
+      return console.error(error)
+
+    if(files.length === 0)
+      return console.error('No src files found at', options.src)
+
+    istanbul.instrumentFiles(files, options.tmp, isrc, function(error) {
+      if(error)
+        return console.error(error)
+
+      configs.src = path.resolve(options.tmp +'/'+ isrc)
       addSpecs(options)
     })
+  })
 
   return options
 }
@@ -94,10 +96,10 @@ function addSpecs(options) {
     if(error)
       return console.error(error)
 
-    configs.spec = files
-
-    if(configs.spec.length === 0)
+    if(files.length === 0)
       return console.error('No spec files found at', options.spec)
+
+    configs.spec = files
 
     addLibs(options)
   })

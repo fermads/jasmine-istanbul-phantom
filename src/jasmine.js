@@ -2,6 +2,7 @@ var fs = require('fs')
 var path = require('path')
 var mkdirp = require('mkdirp')
 var handlebars = require('handlebars')
+var utility = require('./utility')
 
 function writeReport(dir, data, reporters, ee) {
   var count = data.length
@@ -12,7 +13,8 @@ function writeReport(dir, data, reporters, ee) {
     return ee.emit('end')
   }
 
-  mkdirp(dir)
+  if(!utility.isDirectory(dir))
+    mkdirp(dir)
 
   var end = function() {
     if(--count === 0) {
