@@ -11,13 +11,14 @@ function instrumentFiles(files, dir, filename, callback) {
   if(!utility.isDirectory(dir))
     mkdirp(dir)
 
-  files.forEach(function(file) {
+  files.forEach(function(file, index) {
     fs.readFile(file, function(error, contents) {
       if(error)
         return console.error(error)
 
       try {
-        isrc.push(instrumenter.instrumentSync(contents.toString(), file))
+        // must keep glob file order
+        isrc[index] = instrumenter.instrumentSync(contents.toString(), file)
       }
       catch(e) {
         console.error('Unable to instrument', file)
