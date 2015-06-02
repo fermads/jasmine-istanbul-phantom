@@ -3,7 +3,7 @@ var concat = require('gulp-concat')
 var uglify = require('gulp-uglify')
 
 gulp.task('default', function () {
-  gulp.src([
+  gulp.src([ // must load files in correct order
     'lib/phantom/phantom-polyfill.js',
     'lib/jasmine/jasmine.js',
     'lib/jasmine/jasmine-html.js',
