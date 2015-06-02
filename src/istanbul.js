@@ -1,20 +1,31 @@
 var path = require('path')
 var istanbul = require('istanbul')
-var through = require('through2')
+var mkdirp = require('mkdirp')
+var fs = require('fs')
+var utility = require('./utility')
 var instrumenter = new istanbul.Instrumenter()
 
-function instrumentCode() {
-  return through.obj(function(file, enc, cb) {
-    if (!(file.contents instanceof Buffer))
-      throw 'Streams not supported'
+function instrumentFiles(files, dir, filename, callback) {
+  var count = files.length, isrc = []
 
-    instrumenter
-    .instrument(file.contents.toString(), file.path, function (err, code) {
-      if (err)
-        throw 'Unable to parse ' + file.path + '\n\n' + err.message
+  if(!utility.isDirectory(dir))
+    mkdirp(dir)
 
-      file.contents = new Buffer(code);
-      cb(null, file)
+  files.forEach(function(file) {
+    fs.readFile(file, function(error, contents) {
+      if(error)
+        return console.error(error)
+
+      try {
+        isrc.push(instrumenter.instrumentSync(contents.toString(), file))
+      }
+      catch(e) {
+        console.error('Unable to instrument', file)
+      }
+
+      if(--count === 0) {
+        fs.writeFile(dir +'/'+ filename, isrc.join(';'), callback)
+      }
     })
   })
 }
@@ -41,6 +52,6 @@ function writeReport(dir, data, reporters, ee) {
 }
 
 module.exports = {
-  instrumentCode: instrumentCode,
+  instrumentFiles: instrumentFiles,
   writeReport: writeReport
 }
