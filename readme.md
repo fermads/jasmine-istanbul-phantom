@@ -70,7 +70,7 @@ that runs only changed specs
   reports are written.<br>Defaults to `null`
 - **jasmine**
   - **report** (_path_): Path to write Jasmine JUnit XML reports.<br>Default to
-  `[base]/report/unit`.
+  `[base]/report/unit`
 - **istanbul**
   - **report** (_path_): Path to write Istanbul file reports.<br>Default to
     `[base]/report/coverage`
@@ -81,8 +81,8 @@ that runs only changed specs
     [npm phantom](https://www.npmjs.com/package/phantomjs)
   - **verbose** (_boolean_): Show resource errors e.g. file not found.<br>
     Defaults to `false`
-  - **params** (_object_): Phantom additional runtime parameters.<br>
-    Defaults to `{}`. See some [useful parameters](#useful-phantom-parameters)
+  - **params** (_object_): Phantom additional runtime parameters. See some
+    [useful parameters](#useful-phantom-parameters)<br>Defaults to `{}`.
 
 ### Example project structure
 Works with this module's default options
