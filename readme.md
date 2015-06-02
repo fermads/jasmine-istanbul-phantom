@@ -47,47 +47,41 @@ that runs only changed specs
 ## Options
 `[options]` is an object with the following properties and default values:
 
-- **base** (_path_): Defaults try to find `./test` or `./tests` directory
-  &mdash; It's the base path for test files. Will be the parent directory of
-  `spec`, `tmp`, `fixture` and `report` folders when using defaults. Otherwise
-  one must set all paths individually.
-- **src** (_glob_): defaults to `['src/**/*.js','app/**/*.js']` &mdash;
-  JavaScript source files. The ones that will be instrumented and tested
-- **lib** (_glob_): defaults to `['lib/**/*.js', 'vendor?(s)/**/*.js']`
-  &mdash; Other JavaScript files. Will not be tested nor instrumented. Usually
-  this property should be overridden to ensure libs loading order
-- **tmp** (_path_): defaults to `[base]/tmp` &mdash;
-  Path to write instrumented source code, fixtures file and
-  final generated spec runner
-- **spec** (_glob_): defaults to `[base]/spec?(s)/**/*.js` &mdash;
-  Jasmine spec files. The ones that will test the src files
-- **runner** (_file_): defaults to
-  `jasmine-istanbul-phantom/lib/jasmine/SpecRunner.html` &mdash;
-  Jasmine spec runner template. Will be used to generate the final HTML spec
-  runner with calls to src, lib and spec files
-- **fixture** (_glob_): defaults to `[base]/fixture/*` &mdash;
-  Files to be available as fixtures inside spec files.
-  Access fixtures with `getFixture([filename])`
-- **callback** (_function_): defaults to `null` &mdash;
-  Callback function is called when all tests end and reports written
+- **base** (_path_): It's the base path for test files. Will be the parent
+  directory of `spec`, `tmp`, `fixture` and `report` folders when using
+  defaults. Otherwise one must set all paths individually. Defaults try to
+  find `./test` or `./tests` directory
+- **src** (_glob_): JavaScript source files. The ones that will be instrumented
+  and tested. Defaults to `['src/**/*.js','app/**/*.js']`
+- **lib** (_glob_): Other JavaScript files. Will not be tested nor instrumented.
+  Usually this property should be overridden to ensure libs loading order.
+  Defaults to `['lib/**/*.js', 'vendor?(s)/**/*.js']`
+- **tmp** (_path_): Path to write instrumented source code, fixtures file and
+  final generated spec runner. Defaults to `[base]/tmp`
+- **spec** (_glob_): Jasmine spec files. The ones that will test the src files.
+  Defaults to `[base]/spec?(s)/**/*.js`
+- **runner** (_file_): Jasmine spec runner template. Will be used to generate
+  the final HTML spec runner with calls to src, lib and spec files. Defaults to
+  `jasmine-istanbul-phantom/lib/jasmine/SpecRunner.html`
+- **fixture** (_glob_): Files to be available as fixtures inside spec files.
+  Access fixtures with `getFixture([filename])`. Defaults to `[base]/fixture/*`
+- **callback** (_function_): Callback function is called when all tests end and
+  reports are written. Defaults to `null`
 - **jasmine**
-  - **report** (_path_): default to `[base]/report/unit` &mdash;
-    Path to write Jasmine JUnit XML reports
+  - **report** (_path_): Default to `[base]/report/unit`. Path to write Jasmine
+    JUnit XML reports
 - **istanbul**
-  - **report** (_path_):  default to `[base]/report/coverage` &mdash;
-    Path to write Istanbul file reports
-  - **reporters** (_array_): defaults to `['text-summary', 'lcov', 'clover']`
-    &mdash; List of Istanbul reporters
+  - **report** (_path_): Path to write Istanbul file reports. Default to
+    `[base]/report/coverage`
+  - **reporters** (_array_): List of Istanbul reporters. Defaults to
+    `['text-summary', 'lcov', 'clover']`
 - **phantom**
-  - **bin** (_file_): Default uses the included
-    [npm phantom](https://www.npmjs.com/package/phantomjs) &mdash;
-    Phantom binary file location
-  - **verbose** (_boolean_): defaults to `false` &mdash;
-    Show resource errors e.g. file not found
-  - **params** (_object_): defaults to `{}` &mdash;
-    Phantom additional runtime parameters. See some
-    [useful parameters](#useful-phantom-parameters)
-
+  - **bin** (_file_): Phantom binary file location. Default uses the included
+    [npm phantom](https://www.npmjs.com/package/phantomjs)
+  - **verbose** (_boolean_): Show resource errors e.g. file not found. Defaults
+    to `false`
+  - **params** (_object_): Phantom additional runtime parameters. Defaults to
+  `{}`. See some [useful parameters](#useful-phantom-parameters)
 
 ### Example project structure
 Works with this module's default options
