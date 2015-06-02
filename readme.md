@@ -36,7 +36,7 @@ jip({
   lib: ['lib/jquery/*.min.js', 'lib/**/*.js'],
   spec: 'test/spec/*.js',
   fixture: 'test/fixture/*'
-})
+});
 ```
 See [example project](https://github.com/fermads/jasmine-istanbul-phantom/tree/master/example)
 
@@ -47,16 +47,16 @@ that runs only changed specs
 ## Options
 `[options]` is an object with the following properties and default values:
 
-- **base** (_path_): Defaults try to find `./test` or `./tests` directory<br>
-  It's the base path for test files. Will be the parent directory of `spec`,
-  `tmp`, `fixture` and `report` folders when using defaults. Otherwise one must
-  set all paths individually.
-- **src** (_glob_): defaults to `['src/**/*.js','app/**/*.js']`<br>
+- **base** (_path_): Defaults try to find `./test` or `./tests` directory
+  &mdash; It's the base path for test files. Will be the parent directory of
+  `spec`, `tmp`, `fixture` and `report` folders when using defaults. Otherwise
+  one must set all paths individually.
+- **src** (_glob_): defaults to `['src/**/*.js','app/**/*.js']` &mdash;
   JavaScript source files. The ones that will be instrumented and tested
-- **lib** (_glob_): defaults to `['lib/**/*.js', 'vendor?(s)/**/*.js']`<br>
-  Other JavaScript files. Will not be tested nor instrumented. Usually this
-  property should be overridden to ensure libs loading order
-- **tmp** (_path_): defaults to `[base]/tmp`<br>
+- **lib** (_glob_): defaults to `['lib/**/*.js', 'vendor?(s)/**/*.js']`
+  &mdash; Other JavaScript files. Will not be tested nor instrumented. Usually
+  this property should be overridden to ensure libs loading order
+- **tmp** (_path_): defaults to `[base]/tmp` &mdash;
   Path to write instrumented source code, fixtures file and
   final generated spec runner
 - **spec** (_glob_): defaults to `[base]/spec?(s)/**/*.js`<br>
@@ -97,11 +97,11 @@ project/
 │   ├── jquery
 │   │   └── jquery-2.1.4.min.js
 │   └── etc...
-├── src/ (required)
+├── src/
 │   ├── app.js
 │   ├── util.js
 │   └── etc...
-└── test/ (required)
+└── test/
     ├── fixture/ (optional)
     │   └── all fixture files...
     ├── report/ (auto-created)
