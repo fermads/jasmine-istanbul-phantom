@@ -49,39 +49,40 @@ that runs only changed specs
 
 - **base** (_path_): It's the base path for test files. Will be the parent
   directory of `spec`, `tmp`, `fixture` and `report` folders when using
-  defaults. Otherwise one must set all paths individually. Defaults try to
+  defaults. Otherwise one must set all paths individually.<br>Defaults try to
   find `./test` or `./tests` directory
 - **src** (_glob_): JavaScript source files. The ones that will be instrumented
-  and tested. Defaults to `['src/**/*.js','app/**/*.js']`
+  and tested.<br>Defaults to `['src/**/*.js','app/**/*.js']`
 - **lib** (_glob_): Other JavaScript files. Will not be tested nor instrumented.
-  Usually this property should be overridden to ensure libs loading order.
+  Usually this property should be overridden to ensure libs loading order.<br>
   Defaults to `['lib/**/*.js', 'vendor?(s)/**/*.js']`
 - **tmp** (_path_): Path to write instrumented source code, fixtures file and
-  final generated spec runner. Defaults to `[base]/tmp`
+  final generated spec runner.<br>Defaults to `[base]/tmp`
 - **spec** (_glob_): Jasmine spec files. The ones that will test the src files.
-  Defaults to `[base]/spec?(s)/**/*.js`
+  <br>Defaults to `[base]/spec?(s)/**/*.js`
 - **runner** (_file_): Jasmine spec runner template. Will be used to generate
-  the final HTML spec runner with calls to src, lib and spec files. Defaults to
-  `jasmine-istanbul-phantom/lib/jasmine/SpecRunner.html`
+  the final HTML spec runner with calls to src, lib and spec files.<br>
+  Defaults to `jasmine-istanbul-phantom/lib/jasmine/SpecRunner.html`
 - **fixture** (_glob_): Files to be available as fixtures inside spec files.
-  Access fixtures with `getFixture([filename])`. Defaults to `[base]/fixture/*`
+  Access fixtures with `getFixture([filename])`.<br>Defaults to
+  `[base]/fixture/*`
 - **callback** (_function_): Callback function is called when all tests end and
-  reports are written. Defaults to `null`
+  reports are written.<br>Defaults to `null`
 - **jasmine**
-  - **report** (_path_): Default to `[base]/report/unit`. Path to write Jasmine
-    JUnit XML reports
+  - **report** (_path_): Path to write Jasmine JUnit XML reports.<br>Default to
+  `[base]/report/unit`.
 - **istanbul**
-  - **report** (_path_): Path to write Istanbul file reports. Default to
+  - **report** (_path_): Path to write Istanbul file reports.<br>Default to
     `[base]/report/coverage`
-  - **reporters** (_array_): List of Istanbul reporters. Defaults to
+  - **reporters** (_array_): List of Istanbul reporters.<br>Defaults to
     `['text-summary', 'lcov', 'clover']`
 - **phantom**
-  - **bin** (_file_): Phantom binary file location. Default uses the included
+  - **bin** (_file_): Phantom binary file location.<br>Default uses the included
     [npm phantom](https://www.npmjs.com/package/phantomjs)
-  - **verbose** (_boolean_): Show resource errors e.g. file not found. Defaults
-    to `false`
-  - **params** (_object_): Phantom additional runtime parameters. Defaults to
-  `{}`. See some [useful parameters](#useful-phantom-parameters)
+  - **verbose** (_boolean_): Show resource errors e.g. file not found.<br>
+    Defaults to `false`
+  - **params** (_object_): Phantom additional runtime parameters.<br>
+    Defaults to `{}`. See some [useful parameters](#useful-phantom-parameters)
 
 ### Example project structure
 Works with this module's default options
