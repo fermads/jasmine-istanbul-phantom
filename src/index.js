@@ -1,6 +1,5 @@
 var path = require('path')
 var globby = require('globby')
-var events = require('events')
 
 var phantom = require('./phantom')
 var jasmine = require('./jasmine')
@@ -173,7 +172,6 @@ function runPhantom(options) {
 
 function writeReports(reports, options) {
   var istanbulReportData = [], jasmineReportData = [], reportsCount = 0
-  var ee = new events.EventEmitter()
 
   for(var i = 0; i < reports.length; i++) {
     if(reports[i].istanbulReportResult) {
@@ -184,16 +182,16 @@ function writeReports(reports, options) {
     }
   }
 
-  ee.on('end', function() {
+  var end = function() {
     if(options.callback && ++reportsCount == reports.length)
       options.callback()
-  })
+  }
 
   istanbul.writeReport(options.istanbul.report, istanbulReportData,
-    options.istanbul.reporters, ee)
+    options.istanbul.reporters, end)
 
   jasmine.writeReport(options.jasmine.report, jasmineReportData,
-    options.jasmine.reporters, ee)
+    options.jasmine.reporters, end)
 }
 
 module.exports = init

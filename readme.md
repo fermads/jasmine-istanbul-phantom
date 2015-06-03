@@ -188,8 +188,7 @@ jip({
 
 <!--
 ## To-do
-- make writeFixtures and writeRunner async with vinyl and remove dep mkdirp
-- remove through2 from istanbul.instrumentCode
+- make writeFixtures and writeRunner async with mkdirp
 - istanbul thresholds support
 - **clear** (_boolean_): Remove all tmp files at the end (instrumented
   code, generated spec runner, etc). Defaults to false

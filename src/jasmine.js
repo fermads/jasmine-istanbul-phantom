@@ -4,13 +4,13 @@ var mkdirp = require('mkdirp')
 var handlebars = require('handlebars')
 var utility = require('./utility')
 
-function writeReport(dir, data, reporters, ee) {
+function writeReport(dir, data, reporters, callback) {
   var count = data.length
 
   // no jasmine report data to write or no valid reporter selected
-  if(count === 0 || !reporters || reporters.indexOf('junit') === -1){
+  if(count === 0 || !reporters || reporters.indexOf('junit') === -1) {
     console.log('No Jasmine report generated')
-    return ee.emit('end')
+    return callback()
   }
 
   if(!utility.isDirectory(dir))
@@ -19,7 +19,7 @@ function writeReport(dir, data, reporters, ee) {
   var end = function() {
     if(--count === 0) {
       console.log('Jasmine report generated at', path.relative('.', dir))
-      ee.emit('end')
+      callback()
     }
   }
 
@@ -35,8 +35,7 @@ function writeFixtures(filepath, fixtures) {
     var file = fixtures[i]
     var name = path.basename(file)
 
-    fixturesContent[name.replace(/\\/g, '/')]
-      = fs.readFileSync(file).toString()
+    fixturesContent[name.replace(/\\/g, '/')] = fs.readFileSync(file).toString()
   }
 
   fs.writeFileSync(filepath, 'var _fixtures = '

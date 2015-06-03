@@ -31,7 +31,7 @@ function instrumentFiles(files, dir, filename, callback) {
   })
 }
 
-function writeReport(dir, data, reporters, ee) {
+function writeReport(dir, data, reporters, callback) {
   var collector = new istanbul.Collector()
   var reporter = new istanbul.Reporter(false, dir)
   var sync = false
@@ -39,7 +39,7 @@ function writeReport(dir, data, reporters, ee) {
   // No Istanbul report data to write or no reporters selected
   if(!data[0] || !reporters) {
     console.log('No Istanbul report generated')
-    return ee.emit('end')
+    return callback()
   }
 
   collector.add(data[0]) // istanbul report is always only 1
@@ -48,7 +48,7 @@ function writeReport(dir, data, reporters, ee) {
 
   reporter.write(collector, sync, function () {
     console.log('Istanbul report generated at', path.relative('.', dir))
-    ee.emit('end')
+    callback()
   })
 }
 
