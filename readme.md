@@ -168,6 +168,9 @@ jip({
 })
 ```
 
+### Phantom dependency causes installation to fail
+Read the phantomjs module [troubleshooting](https://www.npmjs.com/package/phantomjs#troubleshooting)
+
 ### Useful Phantom parameters
 ```js
 jip({
