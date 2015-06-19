@@ -5,9 +5,8 @@ Gulp and Grunt support combining Jasmine, Istanbul and Phantom in one module
 
 - Jasmine v2.3.4 for unit tests and Istanbul for test coverage
 - Tests run on Phantom 1.9.8 (included) or 2.0.0
+- Easy Gulp integration, works as a Grunt plugin
 - Fixtures auto load
-- Easy Gulp integration
-- Works as a Grunt plugin
 - Includes Jasmine ajax mock
 - Istanbul outputs summary to console and full reports to file
 - Jasmine reports to console and to JUnit XML file for CI
