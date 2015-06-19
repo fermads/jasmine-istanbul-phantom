@@ -50,7 +50,7 @@ that runs only changed specs
 - **base** (_path_): It's the base path for test files. Will be the parent
   directory of `spec`, `tmp`, `fixture` and `report` folders when using
   defaults. Otherwise one must set all paths individually.<br>Defaults try to
-  find `./test` or `./tests` directory
+  find `./test` or `./tests` directory and use it as base path
 - **src** (_glob_): JavaScript source files. The ones that will be instrumented
   and tested.<br>Defaults to `['src/**/*.js','app/**/*.js']`
 - **lib** (_glob_): Other JavaScript files. Will not be tested nor instrumented.
