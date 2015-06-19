@@ -8,6 +8,7 @@ module
 - Tests run on Phantom 1.9.8 (included) or 2.0.0
 - Fixtures auto-load
 - Easy Gulp integration
+- Works as a Grunt plugin
 - Includes Jasmine ajax mock
 - Istanbul outputs summary to console and full reports to file
 - Jasmine reports to console and to JUnit XML file for CI
@@ -43,6 +44,12 @@ See [example project](https://github.com/fermads/jasmine-istanbul-phantom/tree/m
 #### Gulp example
 See a [gulpfile.js](https://github.com/fermads/jasmine-istanbul-phantom/blob/master/example/gulpfile.js)
 that runs only changed specs
+
+#### Grunt example
+This module also works as a Grunt 0.4 plugin.
+See a [gruntfile.js](https://github.com/fermads/jasmine-istanbul-phantom/blob/master/example/gruntfile.js)
+
+
 
 ## Options
 `[options]` is an object with the following properties and default values:
@@ -167,6 +174,9 @@ jip({
   }
 })
 ```
+
+### Phantom dependency causes installation to fail
+Read the phantomjs module [troubleshooting](https://www.npmjs.com/package/phantomjs#troubleshooting)
 
 ### Useful Phantom parameters
 ```js

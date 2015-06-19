@@ -1,7 +1,7 @@
 {
   "author": "fermads",
   "name": "jasmine-istanbul-phantom",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Client side JavaScript unit tests and code coverage with fixtures and ajax mock support",
   "main": "src/index.js",
   "keywords": [
