@@ -1,12 +1,11 @@
 ﻿# jasmine-istanbul-phantom
 
-Client side JavaScript unit tests and code coverage with fixtures and
-ajax mock support combining Jasmine, Istanbul and Phantom in one simple
-module
+Client side JavaScript unit tests and code coverage with fixtures, ajax mock,
+Gulp and Grunt support combining Jasmine, Istanbul and Phantom in one module
 
 - Jasmine v2.3.4 for unit tests and Istanbul for test coverage
 - Tests run on Phantom 1.9.8 (included) or 2.0.0
-- Fixtures auto-load
+- Fixtures auto load
 - Easy Gulp integration
 - Works as a Grunt plugin
 - Includes Jasmine ajax mock
@@ -48,8 +47,6 @@ that runs only changed specs
 #### Grunt example
 This module also works as a Grunt 0.4 plugin.
 See a [gruntfile.js](https://github.com/fermads/jasmine-istanbul-phantom/blob/master/example/gruntfile.js)
-
-
 
 ## Options
 `[options]` is an object with the following properties and default values:
